@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 <?php foreach ($billets as $billet): ?>
-    <article>
+    <article class="card">
         <header>
             <a href="<?= "billet.php?id=" . $billet['id'] ?>">
                 <h1 class="titreBillet"><?= $billet['titre'] ?></h1>
