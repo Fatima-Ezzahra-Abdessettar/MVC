@@ -1,43 +1,118 @@
-/* Pour pouvoir utiliser une hauteur (height) ou une hauteur minimale
-   (min-height) sur un bloc, il faut que son parent direct ait lui-même une
-   hauteur déterminée (donc toute valeur de height sauf "auto": hauteur en
-   pixels, em, autres unités...).
-   Si la hauteur du parent est en pourcentage, elle se réfère alors à la
-   hauteur du «grand-père», et ainsi de suite.
-   Pour pouvoir utiliser un "min-height: 100%" sur div#global, il nous faut:
-   - un parent (body) en "height: 100%";
-   - le parent de body également en "height: 100%". */
+/* ------------------------------
+   GLOBAL RESET + BASE
+--------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html, body {
     height: 100%;
+    font-family: "Inter", "Futura", "Trebuchet MS", sans-serif;
+    background: #d1dfe2;
+    color: #333;
 }
 
-body {
-    color: #bfbfbf;
-    background: black;
-    font-family: 'Futura-Medium', 'Futura', 'Trebuchet MS', sans-serif;
-}
-
-h1 {
-    color: white;
-}
-
-.titreBillet {
-    margin-bottom : 0px;
-}
-
+/* ------------------------------
+   BLOG WRAPPER
+--------------------------------*/
 #global {
-    min-height: 100%;  /* Voir commentaire sur html et body plus haut */
-    background: #333534;
+    min-height: 100%;
     width: 70%;
-    margin: auto;	/* Permet de centrer la div */
-    text-align: justify;
-    padding: 5px 20px;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px 50px;
+    background: #ffffffee;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(8px);
 }
 
-#contenu {
-    margin-bottom : 30px;
+/* ------------------------------
+   TITLES
+--------------------------------*/
+#titreBlog {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #2a3f55;
+    letter-spacing: 1px;
 }
 
-#titreBlog, #piedBlog {
+.title {
     text-align: center;
+    font-size: 28px;
+    margin: 40px 0 20px;
+    color: #4c8bf5;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ------------------------------
+   TEXT
+--------------------------------*/
+#global p {
+    line-height: 1.6;
+    font-size: 18px;
+    color: #4b4b4b;
+}
+
+/* ------------------------------
+   BLOG POSTS & COMMENTS
+--------------------------------*/
+article {
+    padding: 20px 25px;
+    background: #ffffff;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+/* Post title */
+.titreBillet {
+    font-size: 22px;
+    color: #2d5f82;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+/* Date */
+time {
+    display: block;
+    font-size: 14px;
+    color: #7c8a99;
+    margin-bottom: 12px;
+}
+
+/* Post text */
+article p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* ------------------------------
+   HORIZONTAL RULE
+--------------------------------*/
+hr {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin: 25px 0;
+}
+
+/* ------------------------------
+   FOOTER
+--------------------------------*/
+#piedBlog {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 15px;
+    color: #677a8a;
 }
