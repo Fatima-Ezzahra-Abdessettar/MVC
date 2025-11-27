@@ -39,7 +39,16 @@ function getCommentaires($idBillet) {
 // Effectue la connexion à la BDD
 // Instancie et renvoie l'objet PDO associé
 function getBdd() {
-    $bdd = new PDO('mysql:host=localhost;dbname=monblog;charset=utf8', 'root',
-            'mamapapa123', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    return $bdd;
+    $host = 'mysql';
+    $db   = 'monblog';
+    $user = 'root';
+    $pass = 'mamapapa123';
+    $charset = 'utf8';
+
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+
+    return new PDO($dsn, $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
 }
+

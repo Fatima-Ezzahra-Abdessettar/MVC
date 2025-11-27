@@ -15,7 +15,7 @@
     <div class="container">
         <a href="index.php" class="logo">Mon Blog</a>
         <nav class="menu">
-            <a href="home.php">Accueil</a>
+            <a href="index.php">Accueil</a>
             <a href="about.php">À propos</a>
         </nav>
     </div>
