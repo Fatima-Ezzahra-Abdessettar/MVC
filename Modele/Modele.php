@@ -25,17 +25,20 @@ function getBillet($idBillet) {
 // Renvoie la liste des commentaires associés à un billet
 function getCommentaires($idBillet) {
     $bdd = getBdd();
-    $commentaires = $bdd->prepare('select COM_ID as id, COM_DATE as date,'
-            . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
-            . ' where BIL_ID=?');
-    $commentaires->execute(array($idBillet));
-    return $commentaires;
+    $stmt = $bdd->prepare('SELECT COM_ID AS id, COM_DATE AS date,
+            COM_AUTEUR AS auteur, COM_CONTENU AS contenu
+            FROM T_COMMENTAIRE
+            WHERE BIL_ID = ?');
+    $stmt->execute([$idBillet]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupère tous les résultats 
+    //sous forme de tableau associatif
 }
 
 // Effectue la connexion à la BDD
 // Instancie et renvoie l'objet PDO associé
 function getBdd() {
-    $bdd = new PDO('mysql:host=localhost;dbname=monblog;charset=utf8', 'root',
-            '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    $bdd = new PDO('mysql:host=mysql;dbname=monblog;charset=utf8', 'root',
+            'mamapapa123', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     return $bdd;
 }
