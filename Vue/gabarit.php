@@ -16,7 +16,7 @@
         <a href="../index.php" class="logo">Mon Blog</a>
         <nav class="menu">
             <a href="../index.php">Accueil</a>
-            <a href="vue/about.php">À propos</a>
+            <a href="../vue/about.php">À propos</a>
         </nav>
     </div>
 </header>
