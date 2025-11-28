@@ -1,7 +1,7 @@
 <?php
 
 require 'Modele/Modele.php';
-
+// le contrelleur agit comme un intermédiaire entre le modèle et la vue et facilite la gestion des requêtes et des réponses.
 // Affiche la liste de tous les billets du blog
 function accueil() {
     $billets = getBillets();
