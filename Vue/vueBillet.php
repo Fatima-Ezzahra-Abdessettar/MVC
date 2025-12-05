@@ -1,6 +1,5 @@
 <?php $this->titre = "Mon Blog - " . $billet['titre']; ?>
 
-<?php ob_start(); ?>
 <!-- Bouton de retour -->
 <div class="back-btn-container">
     <a href="index.php" class="back-btn">← Retour à l’accueil</a>
@@ -32,6 +31,3 @@
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
-<?php $contenu = ob_get_clean(); ?>
-
-<?php require 'gabarit.php'; ?>

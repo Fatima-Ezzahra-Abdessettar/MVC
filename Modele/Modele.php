@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Classe abstraite Modèle.
- * Centralise les services d'accès à une base de données.
- * Utilise l'API PDO
- *
- * @author Baptiste Pesquet
- */
 abstract class Modele
 {
 
@@ -15,7 +8,6 @@ abstract class Modele
 
     /**
      * Exécute une requête SQL éventuellement paramétrée
-     * 
      * @param string $sql La requête SQL
      * @param array $valeurs Les valeurs associées à la requête
      * @return PDOStatement Le résultat renvoyé par la requête
