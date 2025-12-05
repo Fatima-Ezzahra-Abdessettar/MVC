@@ -1,27 +1,37 @@
 <?php $this->titre = "Mon Blog - " . $billet['titre']; ?>
 
-<article>
+<?php ob_start(); ?>
+<!-- Bouton de retour -->
+<div class="back-btn-container">
+    <a href="index.php" class="back-btn">← Retour à l’accueil</a>
+</div>
+<article class="card">
     <header>
         <h1 class="titreBillet"><?= $billet['titre'] ?></h1>
         <time><?= $billet['date'] ?></time>
     </header>
     <p><?= $billet['contenu'] ?></p>
 </article>
-<hr />
-<header>
-    <h1 id="titreReponses">Réponses à <?= $billet['titre'] ?></h1>
-</header>
-<?php foreach ($commentaires as $commentaire): ?>
-    <p><?= $commentaire['auteur'] ?> dit :</p>
-    <p><?= $commentaire['contenu'] ?></p>
-<?php endforeach; ?>
-<hr />
-<form method="post" action="index.php?action=commenter">
-    <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" 
-           required /><br />
-    <textarea id="txtCommentaire" name="contenu" rows="4" 
-              placeholder="Votre commentaire" required></textarea><br />
-    <input type="hidden" name="id" value="<?= $billet['id'] ?>" />
-    <input type="submit" value="Commenter" />
-</form>
 
+<header>
+    <h1 id="titreReponses">Réponses à : <?= $billet['titre'] ?></h1>
+</header>
+<div class="comments">
+    <?php if (empty($commentaires)): ?>
+        <p class="no-comments">Aucun commentaire pour le moment...</p>
+    <?php else: ?>
+        <?php foreach ($commentaires as $commentaire): ?>
+            <div class="comment-card">
+                <div class="comment-author">
+                    <?= htmlspecialchars($commentaire['auteur']) ?>
+                </div>
+                <div class="comment-content">
+                    <?= nl2br(htmlspecialchars($commentaire['contenu'])) ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+<?php $contenu = ob_get_clean(); ?>
+
+<?php require 'gabarit.php'; ?>

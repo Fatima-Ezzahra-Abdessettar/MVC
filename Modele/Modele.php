@@ -7,7 +7,8 @@
  *
  * @author Baptiste Pesquet
  */
-abstract class Modele {
+abstract class Modele
+{
 
     /** Objet PDO d'accès à la BD */
     private $bdd;
@@ -19,11 +20,11 @@ abstract class Modele {
      * @param array $valeurs Les valeurs associées à la requête
      * @return PDOStatement Le résultat renvoyé par la requête
      */
-    protected function executerRequete($sql, $params = null) {
+    protected function executerRequete($sql, $params = null)
+    {
         if ($params == null) {
             $resultat = $this->getBdd()->query($sql); // exécution directe
-        }
-        else {
+        } else {
             $resultat = $this->getBdd()->prepare($sql);  // requête préparée
             $resultat->execute($params);
         }
@@ -35,14 +36,16 @@ abstract class Modele {
      * 
      * @return PDO L'objet PDO de connexion à la BDD
      */
-    private function getBdd() {
+    private function getBdd()
+    {
         if ($this->bdd == null) {
-            // Création de la connexion
-            $this->bdd = new PDO('mysql:host=localhost;dbname=monblog;charset=utf8',
-                    'root', '',
-                    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $this->bdd = new PDO(
+                'mysql:host=mysql;dbname=monblog;charset=utf8',
+                'root',
+                'mamapapa123',
+                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+            );
         }
         return $this->bdd;
     }
-
 }
