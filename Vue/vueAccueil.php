@@ -1,6 +1,10 @@
 <?php $titre = 'Mon Blog'; ?>
 
 <?php ob_start(); ?>
+<img src="public/Blog.jpg" alt="Image du blog" class="imgBlog">
+<?php if (empty($billets)): ?>
+    <p class="no-posts">Aucun billet disponible pour le moment...</p>
+<?php else: ?>
 <?php foreach ($billets as $billet): ?>
     <article class="card">
         <header>
@@ -15,3 +19,4 @@
 <?php $contenu = ob_get_clean(); ?>
 
 <?php require 'gabarit.php'; ?>
+<?php endif; ?>

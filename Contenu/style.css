@@ -250,3 +250,18 @@ a:hover {
     transform: translateY(0);
     background: #1d4ed8;
 }
+.imgBlog {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 12px;
+}
+.no-posts {
+    text-align: center;
+    font-size: 1.125rem;
+    color: #64748b;
+    margin-top: 40px;
+    font-style: italic;
+}
