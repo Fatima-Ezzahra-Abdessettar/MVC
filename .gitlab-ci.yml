@@ -1,0 +1,60 @@
+stages:
+  - build
+  - test
+  - lint
+  - deploy
+
+variables:
+  MYSQL_ROOT_PASSWORD: mamapapa123
+  MYSQL_DATABASE: monblog
+
+# ------------------
+# BUILD
+# ------------------
+build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - echo "Building Docker image..."
+    - docker build -t monblog-php .
+
+# ------------------
+# TEST (PHPUnit)
+# ------------------
+test:
+  stage: test
+  image: php:8.4-cli
+  services:
+    - name: mysql:8.0
+      alias: mysql
+  before_script:
+    - apt-get update && apt-get install -y unzip git curl
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install --no-interaction --prefer-dist
+  script:
+    - echo "Running PHPUnit tests..."
+    - ./vendor/bin/phpunit --colors=always
+
+# ------------------
+# LINT (PHPCS)
+# ------------------
+lint:
+  stage: lint
+  image: php:8.4-cli
+  before_script:
+    - apt-get update && apt-get install -y curl unzip
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install --no-interaction --prefer-dist
+  script:
+    - echo "Linting PHP code..."
+    - ./vendor/bin/phpcs --standard=PSR12 Controleur Modele Vue public
+
+# ------------------
+# DEPLOY
+# ------------------
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying application..."
