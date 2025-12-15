@@ -2,10 +2,10 @@
 
 <img src="public/Blog.jpg" alt="Image du blog" class="imgBlog">
 
-<?php if (empty($billets)): ?>
+<?php if (empty($billets)) : ?>
     <p class="no-posts">Aucun billet disponible...</p>
-<?php else: ?>
-<?php foreach ($billets as $billet): ?>
+<?php else : ?>
+    <?php foreach ($billets as $billet) : ?>
     <article class="card">
         <header>
             <a href="<?= "index.php?action=billet&id=" . $billet['id'] ?>">
@@ -15,6 +15,6 @@
         </header>
         <p><?= $billet['contenu'] ?></p>
     </article>
-<?php endforeach; ?>
+    <?php endforeach; ?>
 <?php endif; ?>
 

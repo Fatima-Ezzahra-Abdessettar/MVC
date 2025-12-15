@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ruleset name="MonBlog">
+    <description>PHPCS config for MonBlog MVC project</description>
+
+    <!-- Base standard -->
+    <rule ref="PSR12"/>
+
+    <!-- Ignore namespace requirement -->
+    <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace"/>
+
+    <!-- Ignore side-effects warning (MVC views) -->
+    <exclude name="PSR1.Files.SideEffects"/>
+
+    <!-- Project directories -->
+    <file>Controleur</file>
+    <file>Modele</file>
+    <file>Vue</file>
+    <file>public</file>
+</ruleset>

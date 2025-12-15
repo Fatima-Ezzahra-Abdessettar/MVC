@@ -4,7 +4,6 @@ require_once 'Modele/Modele.php';
 
 class Billet extends Modele
 {
-
     /** Renvoie la liste des billets du blog
      * @return PDOStatement La liste des billets
      */
@@ -18,7 +17,7 @@ class Billet extends Modele
     }
 
     /** Renvoie les informations sur un billet
-     * 
+     *
      * @param int $id L'identifiant du billet
      * @return array Le billet
      * @throws Exception Si l'identifiant du billet est inconnu
@@ -29,9 +28,10 @@ class Billet extends Modele
             . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
             . ' where BIL_ID=?';
         $billet = $this->executerRequete($sql, array($idBillet));
-        if ($billet->rowCount() > 0)
+        if ($billet->rowCount() > 0) {
             return $billet->fetch();  // Accès à la première ligne de résultat
-        else
+        } else {
             throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
+        }
     }
 }

@@ -2,7 +2,6 @@
 
 abstract class Modele
 {
-
     /** Objet PDO d'accès à la BD */
     private $bdd;
 
@@ -25,7 +24,7 @@ abstract class Modele
 
     /**
      * Renvoie un objet de connexion à la BD en initialisant la connexion au besoin
-     * 
+     *
      * @return PDO L'objet PDO de connexion à la BDD
      */
     private function getBdd()

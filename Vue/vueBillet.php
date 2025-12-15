@@ -88,10 +88,10 @@
 </header>
 
 <div class="comments">
-    <?php if (empty($commentaires)): ?>
+    <?php if (empty($commentaires)) : ?>
         <p class="no-comments">Aucun commentaire pour le moment...</p>
-    <?php else: ?>
-        <?php foreach ($commentaires as $commentaire): ?>
+    <?php else : ?>
+        <?php foreach ($commentaires as $commentaire) : ?>
             <div class="comment-card">
                 <div class="comment-author">
                     <?= htmlspecialchars($commentaire['auteur']) ?>
