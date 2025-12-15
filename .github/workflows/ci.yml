@@ -71,7 +71,8 @@ jobs:
         run: composer install --no-interaction --prefer-dist
 
       - name: Run PHPCS
-        run: vendor/bin/phpcs --standard=PSR12 Controleur Modele Vue public
+        run: php vendor/bin/phpcs --standard=PSR12 Controleur Modele Vue public
+
 
   deploy:
     name: Deploy
