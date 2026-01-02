@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monblog
+  namespace: mvc-objet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monblog
+  template:
+    metadata:
+      labels:
+        app: monblog
+    spec:
+      containers:
+      - name: web
+        image: monblog:mvc-objet
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
