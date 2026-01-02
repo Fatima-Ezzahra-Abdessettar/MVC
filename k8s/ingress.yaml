@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: monblog-ingress
+  namespace: mvc-procedural
+spec:
+  rules:
+  - host: mvcprocedural.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: monblog-service
+            port:
+              number: 80

@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-init
+  namespace: mvc-procedural
+data:
+  init.sql: |
+    /* Testé sous MySQL 5.x */
+
+    drop table if exists T_COMMENTAIRE;
+    drop table if exists T_BILLET;
+
+    create table T_BILLET (
+      BIL_ID integer primary key auto_increment,
+      BIL_DATE datetime not null,
+      BIL_TITRE varchar(100) not null,
+      BIL_CONTENU varchar(400) not null
+    );
+
+    create table T_COMMENTAIRE (
+      COM_ID integer primary key auto_increment,
+      COM_DATE datetime not null,
+      COM_AUTEUR varchar(100) not null,
+      COM_CONTENU varchar(200) not null,
+      BIL_ID integer not null
+    );
+
+    insert into T_BILLET values
+    (1, NOW(), 'Premier billet', 'Bonjour monde ! Ceci est le premier billet'),
+    (2, NOW(), 'Au travail', 'Il faut enrichir ce blog');
+
+    insert into T_COMMENTAIRE values
+    (1, NOW(), 'A. Nonyme', 'Bravo pour ce début', 1);

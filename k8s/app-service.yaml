@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: monblog-service
+  namespace: mvc-procedural
+spec:
+  selector:
+    app: monblog
+  ports:
+    - port: 80
+      targetPort: 80
