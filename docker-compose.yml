@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    image: monblog:sans-mvc
+    container_name: sans-mvc-web
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: sans-mvc-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mamapapa123
+      MYSQL_DATABASE: monblog
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./MonBlog.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  mysql-data:
